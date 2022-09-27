@@ -1,14 +1,15 @@
 <div class="row">
-    <div class="col-9">
+    <div class="col-12">
         <div class="card">
             <table class="table" style="width: 100%; vertical-align: middle;">
                 <thead>
                     <tr>
                         <th class="" style="width: 15%"><i class="bx bxs-image text-white"></i></th>
-                        <th class="" style="width: 40%">Nome, Email, Telefone</th>
-                        <th class="" style="width: 15%">CPF</th>
-                        <th class="" style="width: 15%">Modalidade</th>
-                        <th class="" style="width: 15%">Situação</th>
+                        <th class="" style="width: 20%">Nome, Email, Telefone</th>
+                        <th class="" style="width: 10%">CPF</th>
+                        <th class="" style="width: 10%">Modalidade</th>
+                        <th class="" style="width: 10%">Situação</th>
+                        <th class="" style="width: 15%">Contrato</th>
                         <th class="text-center" style="width: 10%"></th>
                     </tr>
                 </thead>
@@ -47,6 +48,20 @@
                                     @endforeach
                                 </select>
                             </td>
+                            <td>
+                                <div class="w-100 d-flex align-items-center justify-content-start">
+                                    <div>
+                                        @if($associado->contrato_ativo)
+                                            De {{ date("d/m/Y", strtotime($associado->contrato_ativo->inicio)) }} até {{ date("d/m/Y", strtotime($associado->contrato_ativo->fim)) }}
+                                        @else
+                                            Sem Contrato Ativo
+                                        @endif
+                                    </div>
+                                    <div>
+                                        <a name="" id="" class="btn btn-primary btn-sm ms-3" role="button"><i class="fas fa-edit fa-md"></i></a>
+                                    </div>
+                                </div>
+                            </td>
                             <td class="text-center" style="vertical-align: middle;">
                                 <div class="dropdown mt-4 mt-sm-0">
                                     <a href="#" class="dropdown-toggle" style="font-size: 14px; color: #d9a863"
@@ -69,22 +84,4 @@
             </div>
         </div>
     </div> <!-- end col -->
-    <div class="col-3">
-        <div class="col-sm-12 col-md-6 mb-3  bg-primary" style=" border-radius: 5px; width: 100%;">
-            <a class="btn"
-                style="line-height: 29px;padding-left: 21px; color: white; height: 100%; cursor: default; "
-                href="">Filtros</a>
-        </div>
-        <div class="card  filter-body">
-            <div class="card-body">
-
-                <form id="form-filtro" method="POST">
-                    @csrf
-
-                </form>
-
-            </div>
-        </div>
-    
-    </div>
 </div>
