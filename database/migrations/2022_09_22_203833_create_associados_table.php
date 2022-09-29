@@ -23,8 +23,7 @@ class CreateAssociadosTable extends Migration
             $table->string("telefone", 16)->nullable();
             $table->string("registro_profissional", 20)->nullable();
             $table->unsignedTinyInteger("conselho_profissional")->default(0)->nullable();
-            $table->string("titulo_profissional", 60)->nullable();
-            $table->string("atribuicoes", 100)->nullable();
+            $table->unsignedTinyInteger("titulo_profissional")->nullable();
             $table->string("endereco_atendimento", 100)->nullable();
             $table->string("cidade_atendimento", 50)->nullable();
             $table->string("uf_atendimento", 2)->nullable();

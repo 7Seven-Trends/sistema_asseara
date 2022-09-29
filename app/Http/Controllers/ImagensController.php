@@ -15,8 +15,8 @@ class ImagensController extends Controller
         $type = explode("/", $type)[1];
         $data = base64_decode($data);
         $imageName = time().'.'.$type;
-        file_put_contents('site/imagens/temp/'.$imageName, $data);
-        $caminho = asset('site/imagens/temp/'.$imageName);
+        file_put_contents('images/temp/'.$imageName, $data);
+        $caminho = asset('images/temp/'.$imageName);
         return response()->json($caminho);
     }
 }

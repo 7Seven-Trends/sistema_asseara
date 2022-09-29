@@ -52,13 +52,13 @@
                                 <div class="w-100 d-flex align-items-center justify-content-start">
                                     <div>
                                         @if($associado->contrato_ativo)
-                                            De {{ date("d/m/Y", strtotime($associado->contrato_ativo->inicio)) }} até {{ date("d/m/Y", strtotime($associado->contrato_ativo->fim)) }}
+                                            De <b>{{ date("d/m/Y", strtotime($associado->contrato_ativo->inicio)) }}</b> até <b>{{ date("d/m/Y", strtotime($associado->contrato_ativo->fim)) }}</b>
                                         @else
                                             Sem Contrato Ativo
                                         @endif
                                     </div>
                                     <div>
-                                        <a name="" id="" class="btn btn-primary btn-sm ms-3" role="button"><i class="fas fa-edit fa-md"></i></a>
+                                        <a name="" id="" class="btn btn-primary btn-sm ms-3" role="button" @if(!$associado->contrato_ativo) onclick="Livewire.emit('carregaModalCadastroContrato', {{ $associado->id }})" @else onclick="Livewire.emit('carregaModalEdicaoContrato', {{ $associado->contrato_ativo->id }})" @endif><i class="fas fa-edit fa-md"></i></a>
                                     </div>
                                 </div>
                             </td>

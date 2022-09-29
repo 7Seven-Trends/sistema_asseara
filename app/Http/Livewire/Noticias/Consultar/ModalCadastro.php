@@ -24,9 +24,17 @@ class ModalCadastro extends Component
     public $conteudo;
     public $preview;
     public $nova_thumb;
+    public $tipo = '0';
+    public $link;
     public $show_croppie = false;
 
     protected $listeners = ["abreModalEdicao", "abreModalCadastro"];
+
+    public function updatedTipo(){
+        if($this->tipo == 1){
+            $this->dispatchBrowserEvent('hideSummernote');
+        }
+    }
 
     public function abreModalEdicao(Noticia $noticia)
     {
@@ -39,6 +47,8 @@ class ModalCadastro extends Component
         $this->resumo = $noticia->resumo;
         $this->conteudo = $noticia->conteudo;
         $this->preview = $noticia->preview;
+        $this->tipo = $noticia->tipo;
+        $this->link = $noticia->link;
         $this->tags = $noticia->tags->pluck("id");
         $this->dispatchBrowserEvent("carregaTexto");
         $this->dispatchBrowserEvent("abreModalNoticias");
@@ -68,8 +78,12 @@ class ModalCadastro extends Component
         $noticia->publicacao = $this->publicacao;
         $noticia->fonte = $this->fonte;
         $noticia->resumo = $this->resumo;
-        $noticia->conteudo = Util::processa_editor(null, $this->conteudo, 'site/imagens/noticias/');
-        \Log::debug($this->nova_thumb);
+        $noticia->link = $this->link;
+        if($this->conteudo){
+            $noticia->conteudo = Util::processa_editor(null, $this->conteudo, 'site/imagens/noticias/');
+        }else{
+            $noticia->conteudo = null;
+        }
         if ($this->nova_thumb) {
             Storage::delete(str_replace(url("/"), "", $noticia->preview));
             $caminho = str_replace(URL::to('/'), "", $this->nova_thumb);

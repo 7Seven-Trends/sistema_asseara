@@ -59,6 +59,14 @@
             $("#modalNoticia").modal("hide");
         })
 
+        window.addEventListener("abreModalNoticiasLink", (event) => {
+            $("#modalNoticiaLink").modal("show");
+        })
+
+        window.addEventListener("fechaModalNoticiasLink", (event) => {
+            $("#modalNoticiaLink").modal("hide");
+        })
+
         window.addEventListener("abreModalCategorias", (event) => {
             $("#modalCategoria").modal("show");
         })

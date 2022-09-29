@@ -25,7 +25,7 @@ class CreateNoticiasTable extends Migration
             $table->text('resumo')->nullable();
             $table->string('subtitulo', 255)->nullable();
             $table->string('slug', 100);
-            $table->text('conteudo');
+            $table->text('conteudo')->default(null)->nullable();
             $table->unsignedInteger('visualizacoes')->default(0);
 
             // 0 => Notícia

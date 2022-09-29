@@ -29,6 +29,8 @@ Route::middleware(['admin'])->group(function () {
         // ROTAS DE ASSOCIADOS
         Route::name("associados")->controller(\App\Http\Controllers\AssociadosController::class)->group(function () {
             Route::get('/associados', 'consultar');
+            Route::get('/associados/importar', 'importar')->name(".importar");
+            Route::get('/associados/exportar', 'exportar')->name(".exportar");
         });
 
         // ROTAS DE CONVENIOS

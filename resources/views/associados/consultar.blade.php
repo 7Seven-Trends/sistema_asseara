@@ -13,12 +13,15 @@
 
 @section('botoes')
     <a onclick="Livewire.emit('carregaModalCadastroAssociado')" class="btn btn-success" role="button">Adicionar</a>
+    <a href="{{ route('painel.associados.importar') }}" class="btn btn-info" role="button">Importar</a>
+    <a href="{{ route('painel.associados.exportar') }}" class="btn btn-info" role="button">Exportar</a>
 @endsection
 
 
 @section('conteudo')
     @livewire('associados.consultar.datatable')
     @livewire('associados.consultar.modal-cadastro')
+    @livewire('associados.consultar.modal-contrato')
 @endsection
 
 
