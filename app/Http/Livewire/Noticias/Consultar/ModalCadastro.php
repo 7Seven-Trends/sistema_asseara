@@ -50,6 +50,11 @@ class ModalCadastro extends Component
         $this->tipo = $noticia->tipo;
         $this->link = $noticia->link;
         $this->tags = $noticia->tags->pluck("id");
+        if($this->tipo == 1){
+            $this->dispatchBrowserEvent('hideSummernote');
+        }else{
+            $this->dispatchBrowserEvent('showSummernote');
+        }
         $this->dispatchBrowserEvent("carregaTexto");
         $this->dispatchBrowserEvent("abreModalNoticias");
         $this->dispatchBrowserEvent("resetaCroppie");
@@ -78,6 +83,7 @@ class ModalCadastro extends Component
         $noticia->publicacao = $this->publicacao;
         $noticia->fonte = $this->fonte;
         $noticia->resumo = $this->resumo;
+        $noticia->tipo = $this->tipo;
         $noticia->link = $this->link;
         if($this->conteudo){
             $noticia->conteudo = Util::processa_editor(null, $this->conteudo, 'site/imagens/noticias/');

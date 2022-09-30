@@ -176,6 +176,10 @@
             $("#summernote-container").hide();
         });
 
+        window.addEventListener('showSummernote', event => {
+            $("#summernote-container").show();
+        });
+
         window.addEventListener('addSelect2Option', event => {
             var newOption = new Option(event.detail.nome, event.detail.id, false, false);
             $('select[name="tags[]"]').append(newOption).trigger('change');
