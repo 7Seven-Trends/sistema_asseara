@@ -43,6 +43,11 @@ Route::middleware(['admin'])->group(function () {
             Route::get('/eventos', 'consultar');
         });
 
+        // ROTAS DE BANNERS
+        Route::name("banners")->controller(\App\Http\Controllers\BannersController::class)->group(function () {
+            Route::get('/banners', 'consultar');
+        });
+
         // ROTAS DE USUÁRIOS
         Route::controller(\App\Http\Controllers\UsuariosController::class)->group(function () {
             Route::get('/usuarios', 'consultar')->name("usuarios");

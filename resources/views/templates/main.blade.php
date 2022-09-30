@@ -28,6 +28,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
     @yield('styles')
     @livewireStyles
     @toastr_css
+    @stack('styles')
 </head>
 
 <body data-sidebar="dark">
@@ -293,6 +294,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                 <li><a href="{{ route('painel.convenios') }}" key="t-default">Convênios</a></li>
                                 <li><a href="{{ route('painel.eventos') }}" key="t-default">Eventos</a></li>
                                 <li><a href="{{ route('painel.noticias') }}" key="t-default">Noticias</a></li>
+                                <li><a href="{{ route('painel.banners') }}" key="t-default">Banners</a></li>
                             </ul>
                         </li>
                         <li>

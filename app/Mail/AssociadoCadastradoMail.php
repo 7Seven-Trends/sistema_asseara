@@ -28,7 +28,6 @@ class AssociadoCadastradoMail extends Mailable
      */
     public function build()
     {
-        $this->setFrom()
         return $this->view('view.name');
     }
 }
