@@ -33,6 +33,8 @@ class ModalCadastro extends Component
     public function updatedTipo(){
         if($this->tipo == 1){
             $this->dispatchBrowserEvent('hideSummernote');
+        }else{
+            $this->dispatchBrowserEvent('showSummernote');
         }
     }
 
