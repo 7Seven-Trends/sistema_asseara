@@ -25,7 +25,7 @@
     @toastr_css
 </head>
 
-<body class="auth-body-bg" style="background-color: #094c8c;">
+<body class="auth-body-bg bg-primary">
 
     <div>
         <div class="container-fluid p-0">
@@ -34,7 +34,7 @@
 
                 <!-- end col -->
 
-                <div class="col-xl-3" style="background-color: #094c8c;">
+                <div class="col-xl-3">
                     <div class="auth-full-page-content p-md-5 p-4">
                         <div class="w-100">
 
@@ -82,7 +82,7 @@
                                                 </div> -->
 
                                             <div class="mt-3 d-grid">
-                                                <button class="btn waves-effect waves-light btn-primary"
+                                                <button class="btn waves-effect waves-light btn-success"
                                                     type="submit">Entrar</button>
                                             </div>
 
