@@ -10,10 +10,10 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
 <head>
 
     <meta charset="utf-8" />
-    <title>ASSEARA - Painel Administrativo</title>
+    <title>Painel Administrativo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Painel Administrativo da Gefit" name="description" />
-    <meta content="Luis Gustavo de Souza Carvalho" name="author" />
+    <meta content="Painel Administrativo" name="description" />
+    <meta content="7Seven" name="author" />
     <meta name="_token" content="{{ csrf_token() }}">
 
     <!-- App favicon -->
@@ -46,22 +46,21 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                     <div class="navbar-brand-box">
                         <a href="{{ route('painel.index') }}" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{ asset('images/logo-gefit-branco.png') }}" alt=""
+                                <img src="{{ asset('images/logo_instituicao_mobile.png') }}" alt=""
                                     width="100">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('images/logo-g.png') }}" alt="" width="100">
+                                <img src="{{ asset('images/logo_instituicao.png') }}" alt="" width="100">
                             </span>
                         </a>
 
                         <a href="{{ route('painel.index') }}" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{ asset('images/logo-g.png') }}" alt=""
+                                <img src="{{ asset('images/logo_instituicao_mobile.png') }}" alt=""
                                     style="max-width: 25px;">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('images/logo-gefit-branco.png') }}" alt=""
-                                    width="100">
+                                <img src="{{ asset('images/logo_instituicao.png') }}" alt="" width="100">
                             </span>
                         </a>
                     </div>
@@ -124,140 +123,15 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                         </div>
                     </div>
 
-                    <div class="dropdown d-none d-lg-inline-block ms-1">
-                        <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="bx bx-customize"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                            <div class="px-lg-2">
-                                <div class="row g-0">
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="https://www.instagram.com/gefit.br"
-                                            target="_blank">
-                                            <img src="{{ asset('images/icone_instagram.png') }}" alt="Instagram">
-                                            <span>Instagram</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="https://www.facebook.com/gefit.br"
-                                            target="_blank">
-                                            <img src="{{ asset('images/icone_facebook.png') }}" alt="Facebook">
-                                            <span>Facebook</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="https://twitter.com/gefit_br"
-                                            target="_blank">
-                                            <img src="{{ asset('images/icone_twitter.png') }}" alt="Twitter">
-                                            <span>Twitter</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="row g-0">
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#" target="_blank">
-                                            <img src="{{ asset('images/icone_linkedin.png') }}" alt="Linkedin">
-                                            <span>Linkedin</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#" target="_blank">
-                                            <img src="{{ asset('images/icone_tiktok.png') }}" alt="Tiktok">
-                                            <span>Tiktok</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item"
-                                            href="https://api.whatsapp.com/send?phone=5535997097707" target="_blank">
-                                            <img src="{{ asset('images/icone_whatsapp.png') }}" alt="Whatsapp">
-                                            <span>Whatsapp</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dropdown d-none d-lg-inline-block ms-1">
-                        <button type="button" class="btn header-item noti-icon waves-effect"
-                            data-toggle="fullscreen">
-                            <i class="bx bx-fullscreen"></i>
-                        </button>
-                    </div>
-
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item noti-icon waves-effect"
-                            id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <i class="bx bx-bell bx-tada"></i>
-                            <span class="badge bg-danger rounded-pill">1</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                            aria-labelledby="page-header-notifications-dropdown">
-                            <div class="p-3">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h6 class="m-0" key="t-notifications"> Notificações </h6>
-                                    </div>
-                                    {{-- <div class="col-auto">
-										<a href="#!" class="small" key="t-view-all"> View All</a>
-									</div> --}}
-                                </div>
-                            </div>
-                            <div data-simplebar style="max-height: 230px;">
-                                <a href="https://www.sistemasca.com/blog/" class="text-reset notification-item">
-                                    <div class="media">
-                                        <div class="avatar-xs me-3">
-                                            <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                                <img src="{{ asset('images/logo_sca.png') }}"
-                                                    style="max-width: 100%;" alt="SCA">
-                                            </span>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-1" key="t-your-order">Blog Sistema SCA</h6>
-                                            <div class="font-size-12 text-muted">
-                                                <p class="mb-1" key="t-grammer">Encontre artigos sobre
-                                                    administrativo, técnico, comercial e marketing.</p>
-                                                {{-- <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 min ago</span></p> --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-                            {{-- <div class="p-2 border-top d-grid">
-								<a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-									<i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View More..</span>
-								</a>
-							</div> --}}
-                        </div>
-                    </div>
-
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user"
-                                @if ($usuario->academia && $usuario->academia->logo) src="{{ asset($usuario->academia->logo) }}"
-							@else src="{{ asset('images/logos/gefit.png') }}" @endif
-                                alt="Header Avatar">
                             <span class="d-none d-xl-inline-block ms-1"
                                 key="t-henry">{{ session()->get('usuario')['nome'] }}</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <a class="dropdown-item" href="#"><i
-                                    class="bx bx-user font-size-16 align-middle me-1"></i>
-                                <span key="t-profile">Minha Conta</span></a>
-                            <a class="dropdown-item" href="#"><i
-                                    class="bx bx-key font-size-16 align-middle me-1"></i>
-                                <span key="t-my-wallet">Senha</span></a>
-                            <a class="dropdown-item" href="#"><i
-                                    class="bx bx-wrench font-size-16 align-middle me-1"></i> <span
-                                    key="t-settings">Configurações</span></a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-danger" href="{{ route('painel.sair') }}"><i
                                     class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
                                     key="t-logout">Sair</span></a>
@@ -354,7 +228,7 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                         <div class="col-sm-6">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> © GEFIT | Fitness Intelligence.
+                            </script>
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">

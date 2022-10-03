@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap);
 :root {
-	--azul: #002e82;
-	--verde: #b3f400;
+	--azul: #4a89d3;
+	--verde: #094c8c;
 }
 
 .menu-icon {
@@ -5112,18 +5112,18 @@ div.barra-cheia > div {
 	gap: 3rem;
 }
 
-.cell-imagem-blur{
-    cursor: pointer;
+.cell-imagem-blur {
+	cursor: pointer;
 }
 
-.cell-imagem-blur:hover img{
-    filter: blur(2px);
+.cell-imagem-blur:hover img {
+	filter: blur(2px);
 }
 
-.cell-imagem-blur i{
-    display: none;
+.cell-imagem-blur i {
+	display: none;
 }
 
-.cell-imagem-blur:hover i{
-    display: block;
+.cell-imagem-blur:hover i {
+	display: block;
 }
