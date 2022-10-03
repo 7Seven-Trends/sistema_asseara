@@ -177,6 +177,7 @@
         });
 
         window.addEventListener('showSummernote', event => {
+            alert("FOI");
             $("#summernote-container").show();
         });
 
