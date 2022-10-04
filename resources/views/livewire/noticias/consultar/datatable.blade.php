@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-9">
         <div class="card">
-            <table class="table" style="width: 100%;">
+            <table class="table" style="width: 100%; vertical-align: middle;">
                 <thead>
                     <tr>
                         <th class="" style="width: 5%">Publicada</th>
-                        <th class="" style="width: 15%"><i class="bx bxs-image text-white"></i></th>
+                        <th class="" style="width: 15%">Thumb</th>
+                        <th class="" style="width: 15%">Banner</th>
                         <th class="" style="width: 55%">Título, categoria e Autor</th>
                         <th class="" style="width: 15%">Publicação</th>
                         <th class="text-center" style="width: 10%"></th>
@@ -23,9 +24,21 @@
                                     <i class='bx bxs-badge text-danger' {{--  data-bs-placement="top" title="Ainda não publicada" --}}></i>
                                 @endif
                             </td>
-                            <td class="text-center">
-                                <img src="{{ $noticia->preview }}" width="150" height="60"
+                            <td class="text-center cell-image-blur">
+                                <img src="{{ ($noticia->preview) ? $noticia->preview : asset('images/thumb-padrao.png') }}" width="150" height="60"
                                     style="object-fit: cover; border-radius: 4px">
+                                <label for="input_preview_thumb_{{ $noticia->id }}">
+                                    <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
+                                </label>
+                                <input id="input_preview_thumb_{{ $noticia->id }}" style="display: none;" type="file" wire:model="thumbs.{{ $noticia->id }}" accept="image/*">
+                            </td>
+                            <td class="text-center cell-image-blur">
+                                <img src="{{ ($noticia->banner) ? $noticia->banner : asset('images/thumb-padrao.png') }}" width="150" height="60"
+                                    style="object-fit: cover; border-radius: 4px">
+                                <label for="input_preview_banner_{{ $noticia->id }}">
+                                    <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
+                                </label>
+                                <input id="input_preview_banner_{{ $noticia->id }}" style="display: none;" type="file" wire:model="banners.{{ $noticia->id }}" accept="image/*">
                             </td>
                             <td class="">
                                 <h5 class="text-primary"><a
@@ -52,14 +65,11 @@
                                     </a>
                                     <div class="dropdown-menu" style="margin: 0px;">
 
-                                        <a class="dropdown-item py-2 c-pointer"
+                                        {{-- <a class="dropdown-item py-2 c-pointer"
                                             style="display: flex; align-content: center; justify-content: flex-start; gap: 5px"
-                                            {{-- href="{{route('site.turma', ['turma' => $turma])}}" --}} target="_blank" .>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                                <path fill="000000"
-                                                    d="M160 256C160 185.3 217.3 128 288 128C358.7 128 416 185.3 416 256C416 326.7 358.7 384 288 384C217.3 384 160 326.7 160 256zM288 336C332.2 336 368 300.2 368 256C368 211.8 332.2 176 288 176C287.3 176 286.7 176 285.1 176C287.3 181.1 288 186.5 288 192C288 227.3 259.3 256 224 256C218.5 256 213.1 255.3 208 253.1C208 254.7 208 255.3 208 255.1C208 300.2 243.8 336 288 336L288 336zM95.42 112.6C142.5 68.84 207.2 32 288 32C368.8 32 433.5 68.84 480.6 112.6C527.4 156 558.7 207.1 573.5 243.7C576.8 251.6 576.8 260.4 573.5 268.3C558.7 304 527.4 355.1 480.6 399.4C433.5 443.2 368.8 480 288 480C207.2 480 142.5 443.2 95.42 399.4C48.62 355.1 17.34 304 2.461 268.3C-.8205 260.4-.8205 251.6 2.461 243.7C17.34 207.1 48.62 156 95.42 112.6V112.6zM288 80C222.8 80 169.2 109.6 128.1 147.7C89.6 183.5 63.02 225.1 49.44 256C63.02 286 89.6 328.5 128.1 364.3C169.2 402.4 222.8 432 288 432C353.2 432 406.8 402.4 447.9 364.3C486.4 328.5 512.1 286 526.6 256C512.1 225.1 486.4 183.5 447.9 147.7C406.8 109.6 353.2 80 288 80V80z" />
-                                            </svg>
-                                            Visualizar</a>
+                                             target="_blank" .>
+                                            <i class="fas fa-eye pe-1"></i>
+                                            Visualizar</a> --}}
 
 
                                         @if ($noticia->publicada)

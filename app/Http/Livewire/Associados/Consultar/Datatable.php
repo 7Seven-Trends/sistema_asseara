@@ -39,6 +39,12 @@ class Datatable extends Component
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Informação salva com sucesso!']);
     }
 
+    public function excluir(Associado $associado){
+        $associado->delete();
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Associado removido com sucesso!']);
+        $this->emit('$refresh');
+    }
+
     public function render()
     {
         $associados = Associado::orderBy("created_at", "DESC")->paginate(20);

@@ -32,6 +32,11 @@ class Datatable extends Component
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagem atualizada com sucesso!']);
     }
 
+    public function excluir(Convenio $convenio){
+        $convenio->delete();
+        $this->emit('$refresh');
+    }
+
     public function render()
     {
         $convenios = Convenio::orderBy("created_at", "DESC")->paginate(20);

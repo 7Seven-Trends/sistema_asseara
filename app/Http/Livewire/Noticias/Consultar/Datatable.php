@@ -7,11 +7,14 @@ use App\Models\Noticia;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithPagination;
 use App\Models\Categoria;
+use Livewire\WithFileUploads;
+use App\Classes\Util;
 
 class Datatable extends Component
 {
 
     use WithPagination;
+    use WithFileUploads;
 
     public $filtros;
     public $filtro_titulo;
@@ -19,10 +22,36 @@ class Datatable extends Component
     public $filtro_autor;
     public $filtro_publicacao_inicio;
     public $filtro_publicacao_fim;
+    public $thumbs = [];
+    public $banners = [];
 
     protected $paginationTheme = 'bootstrap';
 
     protected $listeners = ["atualizaDatatable" => '$refresh'];
+
+    public function updatedThumbs($value, $key){
+        $noticia = Noticia::find($key);
+        if($this->thumbs[$key]){
+            Storage::delete($noticia->preview);
+            $noticia->preview = asset($this->thumbs[$key]->store('images/noticias/', 'local'));
+            Util::limparLivewireTemp();
+        }
+        $noticia->save();
+        $this->thumbs = [];
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagem atualizada com sucesso!']);
+    }
+
+    public function updatedBanners($value, $key){
+        $noticia = Noticia::find($key);
+        if($this->banners[$key]){
+            Storage::delete($noticia->preview);
+            $noticia->banner = asset($this->banners[$key]->store('images/noticias/', 'local'));
+            Util::limparLivewireTemp();
+        }
+        $noticia->save();
+        $this->banners = [];
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Imagem atualizada com sucesso!']);
+    }
 
     public function excluirNoticia(Noticia $noticia){
         Storage::delete(str_replace(url("/"), "", $noticia->preview));

@@ -48,6 +48,16 @@ Route::middleware(['admin'])->group(function () {
             Route::get('/banners', 'consultar');
         });
 
+        // ROTAS DE MENSAGENS
+        Route::name("mensagens")->controller(\App\Http\Controllers\MensagensController::class)->group(function () {
+            Route::get('/mensagens/suporte', 'suporte')->name(".suporte");
+        });
+
+        // ROTAS DE NEWSLETTER
+        Route::name("newsletter")->controller(\App\Http\Controllers\NewsletterController::class)->group(function () {
+            Route::get('/newsletter', 'consultar');
+        });
+
         // ROTAS DE USUÁRIOS
         Route::controller(\App\Http\Controllers\UsuariosController::class)->group(function () {
             Route::get('/usuarios', 'consultar')->name("usuarios");

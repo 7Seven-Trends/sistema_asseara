@@ -15,7 +15,7 @@
                 <tbody>
                     @foreach ($convenios as $convenio)
                         <tr>
-                            <td class="text-center cell-imagem-blur" style="position: relative;">
+                            <td class="text-center cell-image-blur" style="position: relative;">
                                 <img src="{{ ($convenio->imagem) ? $convenio->imagem : asset('images/sem-foto.jpg') }}" width="80" height="80"
                                 style="object-fit: cover; border-radius: 50%">                                
                                 <label for="input_preview_{{ $convenio->id }}">
@@ -39,6 +39,9 @@
                                         <a class="dropdown-item py-2" role="button" onclick="Livewire.emit('carregaModalEdicaoConvenio', {{ $convenio->id }})">
                                             <i class="bx bx-edit-alt pe-1"></i>
                                             Editar</a>
+                                        <a class="dropdown-item py-2 text-danger" role="button" wire:click="excluir({{ $convenio->id }})">
+                                            <i class="bx bx bx-trash-alt pe-1"></i>
+                                            Excluir</a>
                                     </div>
                                 </div>
                             </td>

@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Associado extends Model
 {
     protected $guarded = ["id"];
+    
     use HasFactory;
+    use SoftDeletes;
 
     public function contratos(){
         return $this->hasMany(AssociadoContrato::class);
