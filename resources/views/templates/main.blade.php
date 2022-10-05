@@ -69,32 +69,6 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                         id="vertical-menu-btn">
                         <i class="fa fa-fw fa-bars"></i>
                     </button>
-
-                    <!-- App Search-->
-                    {{-- <form class="app-search d-none d-lg-block">
-						<div class="position-relative">
-							<select class="form-control">
-								<option>Nenhuma Academia Selecionada</option>
-								@foreach (\App\Models\Academia::all() as $academia)
-								<option value="{{$academia->id}}">{{$academia->nome}}</option>
-								@endforeach
-							</select>
-							<span class="bx bx-search-alt"></span>
-						</div>
-					</form> --}}
-
-                    {{-- <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
-						<button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-							<span key="t-megamenu">Mega Menu</span>
-							<i class="mdi mdi-chevron-down"></i>
-						</button>
-						<div class="dropdown-menu dropdown-megamenu">
-							<div class="row">
-
-							</div>
-
-						</div>
-					</div> --}}
                 </div>
 
                 <div class="d-flex">
@@ -178,6 +152,8 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.usuarios') }}" key="t-default">Usuários</a></li>
+                                <li><a href="{{ route('painel.mensagens.suporte') }}" key="t-default">Suporte</a></li>
+                                <li><a href="{{ route('painel.newsletter') }}" key="t-default">Newsletter</a></li>
                                 {{-- <li><a href="{{ route('painel.notificacao') }}" key="t-default">Log de
                                         Notificação</a>
                                 </li> --}}

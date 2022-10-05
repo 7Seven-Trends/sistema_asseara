@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-7">
+    <div class="col-12">
 
         <div class="card ">
             <div class="card-body">
@@ -97,52 +97,7 @@
 
         </div>
     </div>
-
-
-    <div class="col-5" style="height: 100%">
-        <div class="card">
-            <div class="card-body">
-
-                <h4 class="card-title">Imagem</h4>
-
-                <div class="row mt-2" @if ($show_croppie) style="display:none;" @endif>
-                    <picture
-                        style="height: 455px;width: 590px;border-radius: 15px;overflow: hidden; display: block; margin: 0 auto;">
-                        <img id="preview-thumbnail"
-                            style="width: 100%; height:100%; object-fit: cover; border-radius: 15px;"
-                            src="@if ($nova_thumb) {{ asset($nova_thumb) }} @elseif($preview) {{ asset($preview) }} @else {{ asset('images/thumb-padrao.png') }} @endif"
-                            alt="">
-                    </picture>
-
-
-                    <div class="col-12 mt-3 text-center">
-                        <label style="width: 60%" onclick="@this.set('show_croppie', true)" class="btn btn-primary"
-                            id="picModalButton"><i class='bx bx-upload text-white'></i></label>
-                    </div>
-                </div>
-
-                <div class="container-fluid" @if (!$show_croppie) style="display:none;" @endif>
-                    <div class="row" wire:ignore>
-                        <div class="col pb-4">
-                            <picture
-                                style=" height: 490px;border-radius: 15px; max-width: 600px;border-radius: 5px; display: block; margin: 0 auto;">
-                                <img id="thumbnail-preview" src="{{ asset('images/thumb-padrao.png') }}" alt="">
-                            </picture>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <label class="btn btn-primary" for="thumbnail-upload">Escolher</label>
-                                <label class="btn btn-primary" id="upload-pronto">Pronto</label>
-                                <label class="btn btn-secondary" id="cancelar-upload">Cancelar</label>
-                                <input name="imagem" id="thumbnail-upload" style="display: none;" type="file"
-                                    accept="image/*">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 @push('styles')
@@ -177,7 +132,6 @@
         });
 
         window.addEventListener('showSummernote', event => {
-            alert("FOI");
             $("#summernote-container").show();
         });
 
@@ -222,81 +176,6 @@
                         @this.set('sobre', contents);
                     },
                 }
-            });
-
-            $uploadCrop = $('#thumbnail-preview').croppie({
-                // enableResize: true,
-                enableExif: false,
-                viewport: {
-                    width: 590,
-                    height: 455,
-                    type: 'rectangle'
-                }
-            });
-
-            $('#thumbnail-upload').on('change', function() {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    }).then(function() {
-                        console.log('jQuery bind complete');
-                    });
-
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-            $("#upload-pronto").click(function() {
-                $uploadCrop.croppie('result', {
-                    type: 'canvas',
-                    size: 'viewport'
-                }).then(function(resp) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                        }
-                    });
-                    $.ajax({
-                        url: "{!! route('painel.imagens.temporarias.salvar') !!}",
-                        type: "POST",
-                        data: {
-                            "image": resp
-                        },
-                        success: function(data) {
-                            $("#preview-thumbnail").attr("src", data);
-                            @this.set('nova_thumb', data);
-                            @this.set('show_croppie', false);
-                            $('#thumbnail-upload').val("");
-                            $uploadCrop.croppie('bind', {
-                                url: "{!! asset('images/thumb-padrao.png') !!}"
-                            }).then(function() {
-                                console.log('jQuery bind complete');
-                            });
-                        }
-                    });
-
-                });
-            });
-
-            $("#cancelar-upload").click(function() {
-                @this.set('show_croppie', false);
-                $('#thumbnail-upload').val("");
-                $uploadCrop.croppie('bind', {
-                    url: "{!! asset('images/thumb-padrao.png') !!}"
-                }).then(function() {
-                    console.log('jQuery bind complete');
-                });
-            })
-
-            window.addEventListener('resetaCroppie', event => {
-                @this.set('show_croppie', false);
-                $('#thumbnail-upload').val("");
-                $uploadCrop.croppie('bind', {
-                    url: "{!! asset('images/thumb-padrao.png') !!}"
-                }).then(function() {
-                    console.log('jQuery bind complete');
-                });
             });
 
             $('.select2-selection--spgle').height('35px');

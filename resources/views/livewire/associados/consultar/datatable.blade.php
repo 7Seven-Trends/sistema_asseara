@@ -18,13 +18,9 @@
                 <tbody>
                     @foreach ($associados as $associado)
                         <tr>
-                            <td class="text-center cell-imagem-blur" style="position: relative;">
+                            <td class="text-center">
                                 <img src="{{ ($associado->foto) ? $associado->foto : asset('images/sem-foto.jpg') }}" width="80" height="80"
                                 style="object-fit: cover; border-radius: 50%">                                
-                                <label for="input_preview_{{ $associado->id }}">
-                                    <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
-                                </label>
-                                <input id="input_preview_{{ $associado->id }}" style="display: none;" type="file" wire:model="arquivos.{{ $associado->id }}" accept="image/*">
                             </td>
                             <td class="">
                                 <h5 class="text-primary"><a>{{ $associado->nome }}</a></h5>
@@ -72,6 +68,9 @@
                                         <a class="dropdown-item py-2" role="button" onclick="Livewire.emit('carregaModalEdicaoAssociado', {{ $associado->id }})">
                                             <i class="bx bx-edit-alt pe-1"></i>
                                             Editar</a>
+                                        <a class="dropdown-item py-2 text-danger" role="button" wire:click="excluir({{ $associado->id }})">
+                                            <i class="bx bx-trash-alt pe-1"></i>
+                                            Excluir</a>
                                     </div>
                                 </div>
                             </td>

@@ -52,6 +52,9 @@
                                         <a class="dropdown-item py-2" role="button" onclick="Livewire.emit('carregaModalEdicaoEvento', {{ $evento->id }})">
                                             <i class="bx bx-edit-alt pe-1"></i>
                                             Editar</a>
+                                        <a class="dropdown-item py-2 text-danger" role="button" wire:click="excluir({{ $evento->id }})">
+                                            <i class="bx bx-trash-alt pe-1"></i>
+                                            Excluir</a>
                                     </div>
                                 </div>
                             </td>

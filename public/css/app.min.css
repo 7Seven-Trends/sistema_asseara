@@ -5112,18 +5112,19 @@ div.barra-cheia > div {
 	gap: 3rem;
 }
 
-.cell-imagem-blur {
+.cell-image-blur {
 	cursor: pointer;
+	position: relative;
 }
 
-.cell-imagem-blur:hover img {
+.cell-image-blur:hover img {
 	filter: blur(2px);
 }
 
-.cell-imagem-blur i {
+.cell-image-blur i {
 	display: none;
 }
 
-.cell-imagem-blur:hover i {
+.cell-image-blur:hover i {
 	display: block;
 }
