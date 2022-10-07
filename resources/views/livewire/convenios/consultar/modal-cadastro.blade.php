@@ -21,7 +21,7 @@
                     </div>
                     <hr>
                     <div class="col-12 text-end">
-                        <button type="submit" class="btn btn-primary" role="button">Salvar</button>
+                        <button type="submit" class="btn btn-primary" role="button" wire:loading.attr="disabled">Salvar</button>
                         <a name="" id="" class="btn btn-secondary" data-bs-dismiss="modal" role="button">Cancelar</a>
                     </div>
                 </form>
