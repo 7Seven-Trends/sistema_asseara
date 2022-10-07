@@ -40,7 +40,7 @@
                 <td>@if($associado->titulo_profissional !== null) {{ config("associados.titulis")[$associado->titulo_profissional] }} @endif</td>
                 <td>{{ $associado->cpf }}</td>
                 <td>{{ $associado->registro_profissional }}</td>
-                <td>{{ date("d/m/Y", strtotime($associado->nascimento)) }}</td>
+                <td>@if($associado->nascimento) {{ date("d/m/Y", strtotime($associado->nascimento)) }} @endif</td>
                 <td>{{ $associado->email }}</td>
                 <td>{{ $associado->telefone }}</td>
                 <td>{{ config("associados.conselhos")[$associado->conselho_profissional] }}</td>
