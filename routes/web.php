@@ -41,6 +41,7 @@ Route::middleware(['admin'])->group(function () {
         // ROTAS DE EVENTOS
         Route::name("eventos")->controller(\App\Http\Controllers\EventosController::class)->group(function () {
             Route::get('/eventos', 'consultar');
+            Route::get('/eventos/{evento}/palestras', 'palestras')->name(".palestras");
         });
 
         // ROTAS DE BANNERS

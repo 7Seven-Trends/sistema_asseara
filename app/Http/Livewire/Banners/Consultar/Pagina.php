@@ -15,6 +15,14 @@ class Pagina extends Component
     public $arquivo;
     public $max;
 
+    protected $listeners = ["atualizaLink"];
+
+    public function atualizaLink(Banner $banner, $link){
+        $banner->link = $link;
+        $banner->save();
+        $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Link salvo com sucesso!']);
+    }
+
     public function updatedArquivo(){
         $banner = new Banner;
         $banner->caminho = asset($this->arquivo->store("images/banners", 'local'));

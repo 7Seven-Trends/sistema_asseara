@@ -6,36 +6,36 @@
                     <tr>
                         <th class="" style="width: 15%"><i class="bx bxs-image text-black mr-2"></i>Thumbnail</th>
                         <th class="" style="width: 15%"><i class="bx bxs-image text-black mr-2"></i>Banner</th>
-                        <th class="" style="width: 40%">Titulo, Tema, Local</th>
+                        <th class="" style="width: 40%">Titulo, Palestrante, Data</th>
                         <th class="text-center" style="width: 10%"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($eventos as $evento)
+                    @foreach ($palestras as $palestra)
                         <tr>
                             <td class="text-center cell-imagem-blur" style="position: relative;">
-                                <img src="{{ ($evento->thumbnail) ? $evento->thumbnail : asset('images/sem-foto.jpg') }}" width="80" height="80"
+                                <img src="{{ ($palestra->thumbnail) ? $palestra->thumbnail : asset('images/sem-foto.jpg') }}" width="80" height="80"
                                 style="object-fit: cover;">                                
-                                <label for="input_preview_{{ $evento->id }}">
+                                <label for="input_preview_{{ $palestra->id }}">
                                     <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
                                 </label>
-                                <input id="input_preview_{{ $evento->id }}" style="display: none;" type="file" wire:model="thumbnails.{{ $evento->id }}" accept="image/*">
+                                <input id="input_preview_{{ $palestra->id }}" style="display: none;" type="file" wire:model="thumbnails.{{ $evento->id }}" accept="image/*">
                             </td>
                             <td class="text-center cell-imagem-blur" style="position: relative;">
-                                <img src="{{ ($evento->banner) ? $evento->banner : asset('images/sem-foto.jpg') }}" width="130" height="80"
+                                <img src="{{ ($palestra->banner) ? $palestra->banner : asset('images/sem-foto.jpg') }}" width="130" height="80"
                                 style="object-fit: cover;">                                
-                                <label for="input_banner_{{ $evento->id }}">
+                                <label for="input_banner_{{ $palestra->id }}">
                                     <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
                                 </label>
-                                <input id="input_banner_{{ $evento->id }}" style="display: none;" type="file" wire:model="banners.{{ $evento->id }}" accept="image/*">
+                                <input id="input_banner_{{ $palestra->id }}" style="display: none;" type="file" wire:model="banners.{{ $palestra->id }}" accept="image/*">
                             </td>
                             <td class="">
-                                <h5 class="text-primary"><a>{{ $evento->titulo }}</a></h5>
+                                <h5 class="text-primary"><a>{{ $palestra->titulo }}</a></h5>
                                 <p class="mb-1">
-                                    {{ $evento->tema }}
+                                    {{ $palestra->palestrante }}
                                 </p>
                                 <p class="mb-1">
-                                    {{ $evento->local }}
+                                    {{ date("d/m/Y", strtotime($palestra->data)) }} às {{ date("H:i", strtotime($palestra->horario)) }}
                                 </p>
                             </td>
                             <td class="text-center" style="vertical-align: middle;">
@@ -45,13 +45,10 @@
                                         <i class="fas fa-bars"></i>
                                     </a>
                                     <div class="dropdown-menu" style="margin: 0px;">
-                                        <a class="dropdown-item py-2" role="button" onclick="Livewire.emit('carregaModalEdicaoEvento', {{ $evento->id }})">
+                                        <a class="dropdown-item py-2" role="button" onclick="Livewire.emit('carregaModalEdicaoPalestra', {{ $palestra->id }})">
                                             <i class="bx bx-edit-alt pe-1"></i>
                                             Editar</a>
-                                        <a class="dropdown-item py-2" role="button" href="{{ route('painel.eventos.palestras', ['evento' => $evento->id]) }}">
-                                            <i class="bx bxl-discourse pe-1"></i>
-                                            Palestras</a>
-                                        <a class="dropdown-item py-2 text-danger" role="button" wire:click="excluir({{ $evento->id }})">
+                                        <a class="dropdown-item py-2 text-danger" role="button" wire:click="excluir({{ $palestra->id }})">
                                             <i class="bx bx-trash-alt pe-1"></i>
                                             Excluir</a>
                                     </div>
@@ -62,7 +59,7 @@
                 </tbody>
             </table>
             <div class="row row-paginacao">
-                {!! $eventos->links() !!}
+                {!! $palestras->links() !!}
             </div>
         </div>
     </div> <!-- end col -->
