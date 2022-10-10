@@ -40,6 +40,9 @@ class ModalCadastro extends Component
 
     public function salvar(){
         $this->evento->conteudo = Util::processa_editor($this->evento->id, $this->evento->conteudo, 'site/images/eventos/');
+        if($this->evento->utiliza_palestras === null){
+            $this->evento->utiliza_palestras = 0;
+        }
         $this->evento->save();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Informações salvas com sucesso!']);
         $this->emit("atualizaDatatableEventos");
