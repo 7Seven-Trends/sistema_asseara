@@ -40,6 +40,8 @@ class ModalCadastro extends Component
         $this->palestra->evento_id = $this->evento_id;
         $this->palestra->conteudo = Util::processa_editor($this->palestra->id, $this->palestra->conteudo, 'site/images/palestras/');
         $this->palestra->save();
+        $this->palestra->evento->data = $this->palestra->evento->palestras->min("data");
+        $this->palestra->evento->save();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Informações salvas com sucesso!']);
         $this->emit("atualizaDatatablePalestras");
         $this->dispatchBrowserEvent("fechaModalCadastroPalestra");

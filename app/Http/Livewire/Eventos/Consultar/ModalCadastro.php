@@ -18,7 +18,9 @@ class ModalCadastro extends Component
         "evento.local" => "",
         "evento.tema" => "",
         "evento.palestrante" => "",
-        "evento.conteudo" => ""
+        "evento.conteudo" => "",
+        "evento.data" => "",
+        "evento.utiliza_palestras" => ""
     ];
 
     public function carregaModalCadastroEvento(){

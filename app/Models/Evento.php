@@ -18,4 +18,8 @@ class Evento extends Model
             Storage::delete(str_replace(url("/"), "", $evento->thumbnail));
         });
     }
+
+    public function palestras(){
+        return $this->hasMany(Palestra::class);
+    }
 }

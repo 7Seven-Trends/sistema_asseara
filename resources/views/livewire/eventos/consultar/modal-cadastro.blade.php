@@ -20,6 +20,17 @@
                         <label class="form-label">Local</label>
                         <input type="text" class="form-control" maxlength="255" required wire:model.defer="evento.local">
                     </div>
+                    <div class="mb-3 col-3">
+                        <label for="" class="form-label">Utiliza Palestras</label>
+                        <select class="form-select" name="" id="" wire:model="evento.utiliza_palestras">
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 col-3 @if($evento && $evento->utiliza_palestras != 0) d-none @endif">
+                        <label for="" class="form-label">Data do Evento</label>
+                        <input type="date" class="form-control" min="{{ date("Y-m-d") }}" wire:model="evento.data">
+                    </div>
                     <div class="mb-4 col-12" wire:ignore>
                         <label for="descricao" class="form-label">Conteúdo</label>
                         <textarea id="conteudo"></textarea>
