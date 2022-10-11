@@ -88,7 +88,7 @@ class ModalCadastro extends Component
         $noticia->tipo = $this->tipo;
         $noticia->link = $this->link;
         if($this->conteudo){
-            $noticia->conteudo = Util::processa_editor(null, $this->conteudo, 'site/imagens/noticias/');
+            $noticia->conteudo = Util::processa_editor(null, $this->conteudo, 'imagems/noticias/');
         }else{
             $noticia->conteudo = null;
         }
