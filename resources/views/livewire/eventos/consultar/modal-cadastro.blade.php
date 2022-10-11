@@ -16,20 +16,28 @@
                         <label class="form-label">Tema</label>
                         <input type="text" class="form-control" maxlength="255" required wire:model.defer="evento.tema">
                     </div>
-                    <div class="mb-3 col-6">
+                    <div class="mb-3 col-4">
                         <label class="form-label">Local</label>
                         <input type="text" class="form-control" maxlength="255" required wire:model.defer="evento.local">
                     </div>
-                    <div class="mb-3 col-3">
+                    <div class="mb-3 col-2">
                         <label for="" class="form-label">Utiliza Palestras</label>
                         <select class="form-select" name="" id="" wire:model="evento.utiliza_palestras">
                             <option value="1">Sim</option>
                             <option value="0">Não</option>
                         </select>
                     </div>
-                    <div class="mb-3 col-3 @if($evento && $evento->utiliza_palestras != 0) d-none @endif">
+                    <div class="mb-3 col-2 @if($evento && $evento->utiliza_palestras != 0) d-none @endif">
                         <label for="" class="form-label">Data do Evento</label>
                         <input type="date" class="form-control" min="{{ date("Y-m-d") }}" wire:model="evento.data">
+                    </div>
+                    <div class="mb-3 col-2 @if($evento && $evento->utiliza_palestras != 0) d-none @endif">
+                        <label for="" class="form-label">Início do Evento</label>
+                        <input type="time" class="form-control" wire:model="evento.horario">
+                    </div>
+                    <div class="mb-3 col-2 @if($evento && $evento->utiliza_palestras != 0) d-none @endif">
+                        <label for="" class="form-label">Fim do Evento</label>
+                        <input type="time" class="form-control" wire:model="evento.horario_fim">
                     </div>
                     <div class="mb-4 col-12" wire:ignore>
                         <label for="descricao" class="form-label">Conteúdo</label>

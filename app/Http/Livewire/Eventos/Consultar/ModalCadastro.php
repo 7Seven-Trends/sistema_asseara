@@ -20,6 +20,8 @@ class ModalCadastro extends Component
         "evento.palestrante" => "",
         "evento.conteudo" => "",
         "evento.data" => "",
+        "evento.horario" => "",
+        "evento.horario_fim" => "",
         "evento.utiliza_palestras" => ""
     ];
 

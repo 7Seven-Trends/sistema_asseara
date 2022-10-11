@@ -20,7 +20,8 @@ class CreateEventosTable extends Migration
             $table->string("titulo")->nullable();
             $table->string("local")->nullable();
             $table->string("tema")->nullable();
-            $table->string("data")->nullable();
+            $table->date("data")->nullable();
+            $table->time("horario")->nullable();
             $table->mediumText("conteudo")->nullable();
             $table->unsignedBigInteger("visitas")->default(0);
             $table->timestamps();
