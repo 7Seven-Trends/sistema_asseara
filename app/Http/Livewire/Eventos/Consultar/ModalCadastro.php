@@ -41,7 +41,7 @@ class ModalCadastro extends Component
     }
 
     public function salvar(){
-        $this->evento->conteudo = Util::processa_editor($this->evento->id, $this->evento->conteudo, 'site/imagems/eventos/');
+        $this->evento->conteudo = Util::processa_editor($this->evento->id, $this->evento->conteudo, 'imagems/eventos/');
         if($this->evento->utiliza_palestras === null){
             $this->evento->utiliza_palestras = 0;
         }
