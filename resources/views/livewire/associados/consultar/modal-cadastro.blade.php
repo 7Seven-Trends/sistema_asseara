@@ -46,17 +46,25 @@
                               @endforeach
                         </select>
                     </div>
-                    <div class="mb-3 col-3">
+                    <div class="mb-3 col-4">
                         <label class="form-label">Título Profissional</label>
-                        <input type="text" class="form-control" maxlength="60" required wire:model.defer="associado.titulo_profissional">
+                        <select class="form-control" name="" id="" required wire:model.defer="associado.titulo_profissional">
+                            <option value="">Selecionar...</option>
+                            @foreach(config("associados.titulis") as $key => $titulo)
+                                <option value="{{ $key }}">{{ $titulo }}</option>
+                            @endforeach
+                      </select>
                     </div>
-                    <div class="mb-3 col-6">
-                        <label class="form-label">Outras Atribuições</label>
-                        <input type="text" class="form-control" maxlength="100" required wire:model.defer="associado.atribuicoes">
-                    </div>
-                    <div class="mb-3 col-3">
+                    <div class="mb-3 col-4">
                         <label class="form-label">E-mail</label>
                         <input type="text" class="form-control" maxlength="50" required wire:model.defer="associado.email">
+                    </div>
+                    <div class="mb-3 col-4 d-flex align-items-center">
+                        @if($associado && $associado->arquivo)
+                            <a href="{{ $associado->arquivo }}" target="_blank" class="mt-3"><i class="fas fa-download fa-lg"></i> Visualizar Documento</a>
+                        @else
+                            Não possui documento
+                        @endif
                     </div>
                     <hr>
                     <h4 class="card-title mb-3">Informações de Atendimento</h4>
