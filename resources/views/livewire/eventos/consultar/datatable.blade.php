@@ -14,20 +14,24 @@
                     @foreach ($eventos as $evento)
                         <tr>
                             <td class="text-center cell-imagem-blur" style="position: relative;">
-                                <img src="{{ ($evento->thumbnail) ? $evento->thumbnail : asset('images/sem-foto.jpg') }}" width="80" height="80"
-                                style="object-fit: cover;">                                
+                                <img src="{{ $evento->thumbnail ? $evento->thumbnail : asset('images/sem-foto.jpg') }}"
+                                    width="80" height="80" style="object-fit: cover;">
                                 <label for="input_preview_{{ $evento->id }}">
-                                    <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
+                                    <i class="fas fa-edit text-white cpointer"
+                                        style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
                                 </label>
-                                <input id="input_preview_{{ $evento->id }}" style="display: none;" type="file" wire:model="thumbnails.{{ $evento->id }}" accept="image/*">
+                                <input id="input_preview_{{ $evento->id }}" style="display: none;" type="file"
+                                    wire:model="thumbnails.{{ $evento->id }}" accept="image/*">
                             </td>
                             <td class="text-center cell-imagem-blur" style="position: relative;">
-                                <img src="{{ ($evento->banner) ? $evento->banner : asset('images/sem-foto.jpg') }}" width="130" height="80"
-                                style="object-fit: cover;">                                
+                                <img src="{{ $evento->banner ? $evento->banner : asset('images/sem-foto.jpg') }}"
+                                    width="130" height="80" style="object-fit: cover;">
                                 <label for="input_banner_{{ $evento->id }}">
-                                    <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
+                                    <i class="fas fa-edit text-white cpointer"
+                                        style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
                                 </label>
-                                <input id="input_banner_{{ $evento->id }}" style="display: none;" type="file" wire:model="banners.{{ $evento->id }}" accept="image/*">
+                                <input id="input_banner_{{ $evento->id }}" style="display: none;" type="file"
+                                    wire:model="banners.{{ $evento->id }}" accept="image/*">
                             </td>
                             <td class="">
                                 <h5 class="text-primary"><a>{{ $evento->titulo }}</a></h5>
@@ -45,13 +49,20 @@
                                         <i class="fas fa-bars"></i>
                                     </a>
                                     <div class="dropdown-menu" style="margin: 0px;">
-                                        <a class="dropdown-item py-2" role="button" onclick="Livewire.emit('carregaModalEdicaoEvento', {{ $evento->id }})">
+                                        <a class="dropdown-item py-2" role="button"
+                                            onclick="Livewire.emit('carregaModalEdicaoEvento', {{ $evento->id }})">
                                             <i class="bx bx-edit-alt pe-1"></i>
                                             Editar</a>
-                                        <a class="dropdown-item py-2" role="button" href="{{ route('painel.eventos.palestras', ['evento' => $evento->id]) }}">
+                                        <a class="dropdown-item py-2" role="button"
+                                            href="{{ route('painel.eventos.palestras', ['evento' => $evento->id]) }}">
                                             <i class="bx bxl-discourse pe-1"></i>
                                             Palestras</a>
-                                        <a class="dropdown-item py-2 text-danger" role="button" wire:click="excluir({{ $evento->id }})">
+                                        <a class="dropdown-item py-2" role="button" target="_blank"
+                                            href="{{ env('MAIN_DOMAIN') }}/hotsite/{{ App\Classes\Util::slugify($evento->titulo) }}">
+                                            <i class="bx bx-star pe-1"></i>
+                                            Hotsite</a>
+                                        <a class="dropdown-item py-2 text-danger" role="button"
+                                            wire:click="excluir({{ $evento->id }})">
                                             <i class="bx bx-trash-alt pe-1"></i>
                                             Excluir</a>
                                     </div>
