@@ -29,7 +29,7 @@
                     </div>
                     <div class="mb-3 col-2 @if($evento && $evento->utiliza_palestras != 0) d-none @endif">
                         <label for="" class="form-label">Data do Evento</label>
-                        <input type="date" class="form-control" min="{{ date("Y-m-d") }}" wire:model="evento.data">
+                        <input type="date" class="form-control" wire:model="evento.data">
                     </div>
                     <div class="mb-3 col-2 @if($evento && $evento->utiliza_palestras != 0) d-none @endif">
                         <label for="" class="form-label">Início do Evento</label>
