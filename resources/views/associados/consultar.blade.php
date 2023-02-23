@@ -13,7 +13,8 @@
 
 @section('botoes')
     <a onclick="Livewire.emit('carregaModalCadastroAssociado')" class="btn btn-success" role="button">Adicionar</a>
-    <a href="{{ route('painel.associados.importar') }}" class="btn btn-info" role="button">Importar</a>
+    <button onclick="Livewire.emit('abreModalImportacao')" type="button" class="btn btn-info">Importar</button>
+    <a href="{{ route('painel.associados.senhas') }}" class="btn btn-info" role="button">Atualizar Senhas</a>
     <a href="{{ route('painel.associados.exportar') }}" class="btn btn-info" role="button">Exportar</a>
 @endsection
 
@@ -22,9 +23,33 @@
     @livewire('associados.consultar.datatable')
     @livewire('associados.consultar.modal-cadastro')
     @livewire('associados.consultar.modal-contrato')
+
+    <div class="modal fade" id="modalImportacao" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-white">Importar Associados
+                    </h5><i data-bs-dismiss="modal" aria-label="Close" class="fas fa-times text-white cpointer"></i>
+                </div>
+                <div class="modal-body">
+                    @livewire('associados.consultar.importacao')
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
+
 @section('scripts')
-    
+    <script>
+        window.addEventListener("abreModalImportacao", (event) => {
+            $("#modalImportacao").modal("show");
+        })
+
+        window.addEventListener("fechaModalImportacao", (event) => {
+            $("#modalImportacao").modal("hide");
+        })
+    </script>
 @endsection
