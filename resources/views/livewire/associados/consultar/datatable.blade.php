@@ -19,8 +19,8 @@
                     @foreach ($associados as $associado)
                         <tr>
                             <td class="text-center">
-                                <img src="{{ ($associado->foto) ? $associado->foto : asset('images/sem-foto.jpg') }}" width="80" height="80"
-                                style="object-fit: cover; border-radius: 50%">                                
+                                <img src="{{ $associado->foto ? $associado->foto : asset('images/sem-foto.jpg') }}"
+                                    width="80" height="80" style="object-fit: cover; border-radius: 50%">
                             </td>
                             <td class="">
                                 <h5 class="text-primary"><a>{{ $associado->nome }}</a></h5>
@@ -35,26 +35,33 @@
                                 {{ $associado->cpf }}
                             </td>
                             <td>
-                                {{ config("associados.modalidades")[$associado->modalidade] }}
+                                {{ $associado->modalidade ? config('associados.modalidades')[$associado->modalidade] : 'Sem modalidade' }}
                             </td>
                             <td>
-                                <select class="form-control" onchange="Livewire.emit('atualizaValorAssociado', {{ $associado->id }}, 'situacao', this.value)">
-                                    @foreach(config("associados.situacoes") as $key => $value)
-                                        <option value="{{ $key }}" @if($key == $associado->situacao) selected @endif>{{ $value }}</option>
+                                <select class="form-control"
+                                    onchange="Livewire.emit('atualizaValorAssociado', {{ $associado->id }}, 'situacao', this.value)">
+                                    @foreach (config('associados.situacoes') as $key => $value)
+                                        <option value="{{ $key }}"
+                                            @if ($key == $associado->situacao) selected @endif>{{ $value }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
                                 <div class="w-100 d-flex align-items-center justify-content-start">
                                     <div>
-                                        @if($associado->contrato_ativo)
-                                            De <b>{{ date("d/m/Y", strtotime($associado->contrato_ativo->inicio)) }}</b> até <b>{{ date("d/m/Y", strtotime($associado->contrato_ativo->fim)) }}</b>
+                                        @if ($associado->contrato_ativo)
+                                            De <b>{{ date('d/m/Y', strtotime($associado->contrato_ativo->inicio)) }}</b>
+                                            até <b>{{ date('d/m/Y', strtotime($associado->contrato_ativo->fim)) }}</b>
                                         @else
                                             Sem Contrato Ativo
                                         @endif
                                     </div>
                                     <div>
-                                        <a name="" id="" class="btn btn-primary btn-sm ms-3" role="button" @if(!$associado->contrato_ativo) onclick="Livewire.emit('carregaModalCadastroContrato', {{ $associado->id }})" @else onclick="Livewire.emit('carregaModalEdicaoContrato', {{ $associado->contrato_ativo->id }})" @endif><i class="fas fa-edit fa-md"></i></a>
+                                        <a name="" id="" class="btn btn-primary btn-sm ms-3"
+                                            role="button"
+                                            @if (!$associado->contrato_ativo) onclick="Livewire.emit('carregaModalCadastroContrato', {{ $associado->id }})" @else onclick="Livewire.emit('carregaModalEdicaoContrato', {{ $associado->contrato_ativo->id }})" @endif><i
+                                                class="fas fa-edit fa-md"></i></a>
                                     </div>
                                 </div>
                             </td>
@@ -65,10 +72,12 @@
                                         <i class="fas fa-bars" {{--  data-bs-placement="top" title="Opções" --}}></i>
                                     </a>
                                     <div class="dropdown-menu" style="margin: 0px;">
-                                        <a class="dropdown-item py-2" role="button" onclick="Livewire.emit('carregaModalEdicaoAssociado', {{ $associado->id }})">
+                                        <a class="dropdown-item py-2" role="button"
+                                            onclick="Livewire.emit('carregaModalEdicaoAssociado', {{ $associado->id }})">
                                             <i class="bx bx-edit-alt pe-1"></i>
                                             Editar</a>
-                                        <a class="dropdown-item py-2 text-danger" role="button" wire:click="excluir({{ $associado->id }})">
+                                        <a class="dropdown-item py-2 text-danger" role="button"
+                                            wire:click="excluir({{ $associado->id }})">
                                             <i class="bx bx-trash-alt pe-1"></i>
                                             Excluir</a>
                                     </div>
