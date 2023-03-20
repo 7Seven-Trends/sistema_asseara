@@ -8,14 +8,14 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class AssociadosExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function view(): View
-    {
-        return view('exports.associados', [
-            'associados' => Associado::all()
-        ]);
-        // return Associado::select("id", "nome", "cpf", "registro_profissional")->get();
-    }
+	/**
+	 * @return \Illuminate\Support\Collection
+	 */
+	public function view(): View
+	{
+		return view('exports.associados', [
+			'associados' => Associado::where('deleted_at', null)->get()
+		]);
+		// return Associado::select("id", "nome", "cpf", "registro_profissional")->get();
+	}
 }

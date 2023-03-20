@@ -59,7 +59,11 @@
                 </td>
                 <td>{{ $associado->email }}</td>
                 <td>{{ $associado->telefone }}</td>
-                <td>{{ config('associados.conselhos')[$associado->conselho_profissional] }}</td>
+                <td>
+                    @if ($associado->conselho !== null)
+                        {{ config('associados.conselhos')[$associado->conselho_profissional] }}
+                    @endif
+                </td>
                 <td>{{ $associado->endereco_atendimento }}</td>
                 <td>{{ $associado->cidade_atendimento }}</td>
                 <td>{{ $associado->uf_atendimento }}</td>
