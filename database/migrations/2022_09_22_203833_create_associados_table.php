@@ -30,6 +30,7 @@ class CreateAssociadosTable extends Migration
             $table->string("cep_atendimento", 9)->nullable();
             $table->string("pais_atendimento", 30)->default("Brasil")->nullable();
             $table->string("foto")->nullable();
+
             // 0 => Em Análise
             // 1 => Aprovado
             // 2 => Reprovado

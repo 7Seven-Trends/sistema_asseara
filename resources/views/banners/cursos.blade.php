@@ -1,5 +1,5 @@
 @extends('templates.main')
 
 @section('conteudo')
-    @livewire('banners.consultar.pagina')
+    @livewire('banners.cursos.pagina')
 @endsection

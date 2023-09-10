@@ -38,7 +38,7 @@ class NoticiasController extends Controller
             return view("noticias.consultar", ["noticias" => $noticias, "filtros" => $request->all()]);
         }
     }
-    
+
     public function cadastro(){
         return view("noticias.cadastro");
     }
@@ -57,7 +57,7 @@ class NoticiasController extends Controller
             $noticia = new Noticia;
             $noticia->usuario_id = session()->get("usuario")["id"];
         }
-        
+
         $noticia->titulo = $request->titulo;
         $noticia->subtitulo = $request->subtitulo;
         $noticia->autor = $request->autor;
@@ -90,7 +90,7 @@ class NoticiasController extends Controller
         }
 
         $noticia->save();
-        
+
         $noticia->tags()->detach();
 
         if($request->tags){
@@ -105,7 +105,7 @@ class NoticiasController extends Controller
                 }
             }
         }
-        
+
         // Log::channel('noticias')->info('<b>CADASTRANDO NOTICIA</b>: O usuario <b>' . session()->get("usuario")["usuario"] . '</b> cadastrou a noticia <b>' . $noticia->titulo . '</b>');
         toastr()->success("Notícia salva com sucesso!");
 
@@ -149,7 +149,7 @@ class NoticiasController extends Controller
         }
 
         $noticia->save();
-        
+
         foreach($noticia->getChanges() as $campo => $valor){
             if(!in_array($campo, ["updated_at", "slug"])){
                 Log::channel('noticias')->info('<b>EDITANDO NOTICIA #'.$noticia->id.'</b>: O usuario <b>' . session()->get("usuario")["usuario"] . '</b> alterou o valor do campo <b>' . $campo . '</b> de <b>' . $old[$campo] . '</b> para <b>' . $valor . '</b>');
@@ -164,7 +164,7 @@ class NoticiasController extends Controller
         $noticia->hashtags()->detach();
         foreach($request->hashtags as $hashtag){
             $noticia->hashtags()->attach($hashtag);
-        }  
+        }
 
         toastr()->success("Notícia salva com sucesso!");
 

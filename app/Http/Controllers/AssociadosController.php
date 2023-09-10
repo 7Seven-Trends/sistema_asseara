@@ -40,6 +40,5 @@ class AssociadosController extends Controller
 	public function exportar()
 	{
 		return Excel::download(new AssociadosExport, "associados.xlsx");
-		// return redirect()->back();
 	}
 }

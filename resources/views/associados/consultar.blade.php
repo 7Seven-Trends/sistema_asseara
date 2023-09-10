@@ -7,7 +7,7 @@
 @endsection
 
 @section('titulo')
-    Institucional / <a style="color: unset" href="{{ route('painel.associados') }}">Associados</a>
+    Associados / <a style="color: unset" href="{{ route('painel.associados') }}">Listagem</a>
 @endsection
 
 

@@ -1,7 +1,7 @@
 @php
-
-$usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
-
+    
+    $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
+    
 @endphp
 
 <!doctype html>
@@ -138,13 +138,37 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                                 <span key="t-dashboards">Institucional</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('painel.associados') }}" key="t-default">Associados</a></li>
                                 <li><a href="{{ route('painel.convenios') }}" key="t-default">Convênios</a></li>
                                 <li><a href="{{ route('painel.eventos') }}" key="t-default">Eventos</a></li>
                                 <li><a href="{{ route('painel.noticias') }}" key="t-default">Noticias</a></li>
-                                <li><a href="{{ route('painel.banners') }}" key="t-default">Banners</a></li>
                             </ul>
                         </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="waves-effect">
+                                <i class='bx bx-user'></i>
+                                <span key="t-dashboards">Associados</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{ route('painel.associados') }}" key="t-default">Associados</a></li>
+                                <li><a href="{{ route('painel.servicos') }}" key="t-default">Serviços</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li>
+                            <a href="javascript: void(0);" class="waves-effect">
+                                <i class='bx bx-image'></i>
+                                <span key="t-dashboards">Banners</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{ route('painel.banners') }}" key="t-default">Principal</a></li>
+                                <li><a href="{{ route('painel.banners.cursos') }}" key="t-default">Cursos</a></li>
+                            </ul>
+                        </li>
+
+
                         <li>
                             <a href="javascript: void(0);" class="waves-effect">
                                 <i class='bx bx-briefcase-alt-2'></i>
@@ -152,7 +176,8 @@ $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.usuarios') }}" key="t-default">Usuários</a></li>
-                                <li><a href="{{ route('painel.mensagens.suporte') }}" key="t-default">Suporte</a></li>
+                                <li><a href="{{ route('painel.mensagens.suporte') }}" key="t-default">Suporte</a>
+                                </li>
                                 <li><a href="{{ route('painel.newsletter') }}" key="t-default">Newsletter</a></li>
                                 {{-- <li><a href="{{ route('painel.notificacao') }}" key="t-default">Log de
                                         Notificação</a>

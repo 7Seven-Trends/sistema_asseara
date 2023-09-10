@@ -34,6 +34,10 @@ Route::middleware(['admin'])->group(function () {
 			Route::get('/associados/exportar', 'exportar')->name(".exportar");
 		});
 
+		Route::name("servicos")->controller(\App\Http\Controllers\ServicosController::class)->group(function () {
+			Route::get('/servicos', 'consultar');
+		});
+
 		// ROTAS DE CONVENIOS
 		Route::name("convenios")->controller(\App\Http\Controllers\ConveniosController::class)->group(function () {
 			Route::get('/convenios', 'consultar');
@@ -47,7 +51,8 @@ Route::middleware(['admin'])->group(function () {
 
 		// ROTAS DE BANNERS
 		Route::name("banners")->controller(\App\Http\Controllers\BannersController::class)->group(function () {
-			Route::get('/banners', 'consultar');
+			Route::get('/banners/principal', 'consultar');
+			Route::get('/banners/cursos', 'cursos')->name(".cursos");
 		});
 
 		// ROTAS DE MENSAGENS

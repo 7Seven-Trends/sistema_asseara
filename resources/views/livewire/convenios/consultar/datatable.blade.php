@@ -16,12 +16,14 @@
                     @foreach ($convenios as $convenio)
                         <tr>
                             <td class="text-center cell-image-blur" style="position: relative;">
-                                <img src="{{ ($convenio->imagem) ? $convenio->imagem : asset('images/sem-foto.jpg') }}" width="80" height="80"
-                                style="object-fit: cover; border-radius: 50%">                                
+                                <img src="{{ $convenio->imagem ? $convenio->imagem : asset('images/sem-foto.jpg') }}"
+                                    width="80" height="80" style="object-fit: cover; border-radius: 50%">
                                 <label for="input_preview_{{ $convenio->id }}">
-                                    <i class="fas fa-edit text-white cpointer" style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
+                                    <i class="fas fa-edit text-white cpointer"
+                                        style="font-size: 14px; position: absolute; top: calc(50% - 7px); left: calc(50% - 7px);"></i>
                                 </label>
-                                <input id="input_preview_{{ $convenio->id }}" style="display: none;" type="file" wire:model="arquivos.{{ $convenio->id }}" accept="image/*">
+                                <input id="input_preview_{{ $convenio->id }}" style="display: none;" type="file"
+                                    wire:model="arquivos.{{ $convenio->id }}" accept="image/*">
                             </td>
                             <td class="">
                                 <h5 class="text-primary"><a>{{ $convenio->nome }}</a></h5>
@@ -36,10 +38,13 @@
                                         <i class="fas fa-bars" {{--  data-bs-placement="top" title="Opções" --}}></i>
                                     </a>
                                     <div class="dropdown-menu" style="margin: 0px;">
-                                        <a class="dropdown-item py-2" role="button" onclick="Livewire.emit('carregaModalEdicaoConvenio', {{ $convenio->id }})">
+                                        <a class="dropdown-item py-2" role="button"
+                                            onclick="Livewire.emit('carregaModalEdicaoConvenio', {{ $convenio->id }})">
                                             <i class="bx bx-edit-alt pe-1"></i>
                                             Editar</a>
-                                        <a class="dropdown-item py-2 text-danger" role="button" wire:click="excluir({{ $convenio->id }})">
+
+                                        <a class="dropdown-item py-2 text-danger" role="button"
+                                            wire:click="excluir({{ $convenio->id }})">
                                             <i class="bx bx bx-trash-alt pe-1"></i>
                                             Excluir</a>
                                     </div>
@@ -70,6 +75,6 @@
 
             </div>
         </div>
-    
+
     </div>
 </div>
