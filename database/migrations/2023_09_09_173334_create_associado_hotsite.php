@@ -20,7 +20,7 @@ class CreateAssociadoHotsite extends Migration
 
 			$table->string("logo")->nullable();
 			$table->string("cover_video")->nullable();
-			$table->string("video")->nullable();
+			$table->string("video", 100)->nullable();
 
 			$table->text("apresentacao")->nullable();
 			$table->text("formacao")->nullable();
