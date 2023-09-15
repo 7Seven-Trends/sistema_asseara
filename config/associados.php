@@ -326,7 +326,8 @@
         ],
         "conselhos" => [
             0 => "CAU",
-            1 => "CONFEA"
+            1 => "CONFEA",
+            2 => "INSTITUIÇÃO DE ENSINO"
         ],
         "situacoes" => [
             0 => "Em análise",

@@ -185,6 +185,14 @@
                             </ul>
                         </li>
 
+
+                        <li>
+                            <a href="{{ route('painel.hotsites') }}" class="waves-effect">
+                                <i class='bx bx-fullscreen'></i>
+                                <span key="t-dashboards">Hotsites de Captura</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
                 <!-- Sidebar -->

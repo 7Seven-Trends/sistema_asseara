@@ -12,7 +12,7 @@ class ModalCadastro extends Component
     protected $listeners = ["carregaModalCadastroServicos", "carregaModalEdicaoServicos", "resetaModalCadastroServicos"];
     protected $rules = [
         "servico.nome" => "",
-        "servico.conteudo" => "",
+        // "servico.conteudo" => "",
         "servico.ativo" => true,
     ];
 

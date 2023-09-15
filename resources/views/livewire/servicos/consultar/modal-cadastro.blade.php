@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document" wire:ignore.self>
         <div class="modal-content" wire:ignore.self>
             <div class="modal-header" wire:ignore.self>
-                <h5 class="modal-title" id="modalTitleId">Cadastro de Serviços</h5>
+                <h5 class="modal-title" id="modalTitleId">Cadastro de Tipo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" wire:ignore.self>
@@ -11,15 +11,15 @@
                     <h4 class="card-title mb-3">Informações Gerais</h4>
 
                     <div class="mb-3 col-12">
-                        <label class="form-label">Nome do Serviço:</label>
+                        <label class="form-label">Nome do Tipo de Profissional:</label>
                         <input type="text" class="form-control" maxlength="60" required
                             wire:model.defer="servico.nome">
                     </div>
 
-                    <div class="mb-3 col-12">
+                    {{-- <div class="mb-3 col-12">
                         <label class="form-label">Conteúdo:</label>
                         <textarea class="form-control" rows="10" required wire:model.defer="servico.conteudo"></textarea>
-                    </div>
+                    </div> --}}
 
                     <hr>
                     <div class="col-12 text-end">

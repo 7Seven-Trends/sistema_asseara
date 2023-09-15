@@ -78,6 +78,11 @@ Route::middleware(['admin'])->group(function () {
 			Route::get('/usuarios/remover/{usuario}', 'remover')->name("usuario.remover");
 		});
 
+		// ROTAS DE HOTSITES
+		Route::name("hotsites")->controller(\App\Http\Controllers\HotsitesController::class)->group(function () {
+			Route::get('/hotsites', 'consultar');
+		});
+
 
 		// ROTAS DE TAGS
 		Route::get('/tags', [\App\Http\Controllers\TagsController::class, 'consultar'])->name("tags");

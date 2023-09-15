@@ -5,9 +5,9 @@
                 <thead>
                     <tr>
                         <th class="" style="width: 15%"><i class="bx bxs-image text-black mr-2"></i> Icone</th>
-                        <th class="" style="width: 15%"><i class="bx bxs-image text-black mr-2"></i> Banner</th>
+                        {{-- <th class="" style="width: 15%"><i class="bx bxs-image text-black mr-2"></i> Banner</th> --}}
                         <th class="" style="width: 20%">Nome</th>
-                        <th class="" style="width: 40%">Conteúdo</th>
+                        {{-- <th class="" style="width: 40%">Conteúdo</th> --}}
                         <th class="text-center" style="width: 10%"></th>
                     </tr>
                 </thead>
@@ -26,7 +26,8 @@
                                 <input id="input_preview_{{ $servico->id }}" style="display: none;" type="file"
                                     wire:model="icons.{{ $servico->id }}" accept="image/*">
                             </td>
-                            <td class="text-center cell-imagem-blur" style="position: relative;">
+                            
+                            {{-- <td class="text-center cell-imagem-blur" style="position: relative;">
                                 <img src="{{ $servico->banner ? $servico->banner : asset('images/sem-foto.jpg') }}"
                                     width="130" height="80" style="object-fit: cover;">
                                 <label for="input_banner_{{ $servico->id }}">
@@ -35,16 +36,16 @@
                                 </label>
                                 <input id="input_banner_{{ $servico->id }}" style="display: none;" type="file"
                                     wire:model="banners.{{ $servico->id }}" accept="image/*">
-                            </td>
+                            </td> --}}
 
 
                             <td class="">
                                 <h5 class="text-primary"><a>{{ $servico->nome }}</a></h5>
                             </td>
 
-                            <td class="">
+                            {{-- <td class="">
                                 <p>{{ $servico->conteudo }}</p>
-                            </td>
+                            </td> --}}
 
 
                             <td class="text-center" style="vertical-align: middle;">
