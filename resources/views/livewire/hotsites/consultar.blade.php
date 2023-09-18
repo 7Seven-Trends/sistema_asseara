@@ -1,13 +1,13 @@
 <div class="row boxes">
     <div class="col-3 box">
-        <a href="">
+        <a href="https://curso.7seventrends.com/model01" target="_blank">
             <img src="{{ asset('/imagems/hotsites/image 139.jpg') }}" alt="">
             <h2>Exemplo Hotsite 1</h2>
         </a>
     </div>
 
     <div class="col-3 box">
-        <a href="">
+        <a href="https://curso.7seventrends.com/model02" target="_blank">
             <img src="{{ asset('/imagems/hotsites/image 139.jpg') }}" alt="">
             <h2>Exemplo Hotsite 2</h2>
         </a>

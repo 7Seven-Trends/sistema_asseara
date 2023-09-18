@@ -1,7 +1,7 @@
 @extends('templates.main')
 
 @section('titulo')
-    Associados / <a style="color: unset" href="{{ route('painel.servicos') }}">Serviços</a>
+    Associados / <a style="color: unset" href="{{ route('painel.servicos') }}">Tipos de Profissionais</a>
 @endsection
 
 

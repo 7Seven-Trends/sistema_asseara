@@ -35,7 +35,7 @@ Route::middleware(['admin'])->group(function () {
 		});
 
 		Route::name("servicos")->controller(\App\Http\Controllers\ServicosController::class)->group(function () {
-			Route::get('/servicos', 'consultar');
+			Route::get('/tipos', 'consultar');
 		});
 
 		// ROTAS DE CONVENIOS

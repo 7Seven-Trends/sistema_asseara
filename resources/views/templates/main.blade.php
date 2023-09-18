@@ -151,7 +151,8 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.associados') }}" key="t-default">Associados</a></li>
-                                <li><a href="{{ route('painel.servicos') }}" key="t-default">Serviços</a></li>
+                                <li><a href="{{ route('painel.servicos') }}" key="t-default">Tipos de
+                                        Profissionais</a></li>
                             </ul>
                         </li>
 
