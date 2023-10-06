@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [\App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
 Route::post('/logar', [\App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");
 
+Route::post('/api/leads', [\App\Http\Controllers\ApiController::class, 'leadAdd'])->name("lead.add");
+
 Route::middleware(['admin'])->group(function () {
 
 	Route::name("painel.")->group(function () {
