@@ -5,7 +5,7 @@
 @endsection
 
 @section('titulo')
-    Institucional / <a style="color: unset" href="{{ route('painel.leads') }}">Newsletter</a>
+    Institucional / <a style="color: unset" href="{{ route('painel.leads') }}">Leads</a>
 @endsection
 
 
