@@ -177,9 +177,9 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ route('painel.usuarios') }}" key="t-default">Usuários</a></li>
-                                <li><a href="{{ route('painel.mensagens.suporte') }}" key="t-default">Suporte</a>
-                                </li>
+                                <li><a href="{{ route('painel.mensagens.suporte') }}" key="t-default">Suporte</a></li>
                                 <li><a href="{{ route('painel.newsletter') }}" key="t-default">Newsletter</a></li>
+                                <li><a href="{{ route('painel.leads') }}" key="t-default">Leads</a></li>
                                 {{-- <li><a href="{{ route('painel.notificacao') }}" key="t-default">Log de
                                         Notificação</a>
                                 </li> --}}

@@ -67,6 +67,11 @@ Route::middleware(['admin'])->group(function () {
 			Route::get('/newsletter', 'consultar');
 		});
 
+		// ROTAS DE LEADS
+		Route::name("leads")->controller(\App\Http\Controllers\LeadsController::class)->group(function () {
+			Route::get('/leads', 'consultar');
+		});
+
 		// ROTAS DE USUÁRIOS
 		Route::controller(\App\Http\Controllers\UsuariosController::class)->group(function () {
 			Route::get('/usuarios', 'consultar')->name("usuarios");
