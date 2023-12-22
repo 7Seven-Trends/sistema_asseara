@@ -1,6 +1,15 @@
 <div class="row">
     <div class="col-12">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <input type="text" class="form-control" wire:model.debounce.300ms="search" placeholder="Buscar associado">
+            </div>
+        </div>
+        
         <div class="card">
+
+            
+            
             <table class="table" style="width: 100%; vertical-align: middle;">
                 <thead>
                     <tr>

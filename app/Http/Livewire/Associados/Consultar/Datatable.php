@@ -12,13 +12,15 @@ use Illuminate\Support\Facades\Storage;
 
 class Datatable extends Component
 {
-	use WithPagination;
-	use WithFileUploads;
+    use WithPagination;
+    use WithFileUploads;
 
-	public $arquivos = [];
+    public $arquivos = [];
+    public $search = '';
 
-	protected $paginationTheme = "bootstrap";
-	protected $listeners = ["atualizaDatatableAssociados" => '$refresh', 'atualizaValorAssociado'];
+    protected $paginationTheme = "bootstrap";
+    protected $listeners = ["atualizaDatatableAssociados" => '$refresh', 'atualizaValorAssociado'];
+
 
 	public function updatedArquivos($value, $key)
 	{
@@ -49,8 +51,20 @@ class Datatable extends Component
 	}
 
 	public function render()
-	{
-		$associados = Associado::orderBy("created_at", "DESC")->paginate(20);
-		return view('livewire.associados.consultar.datatable', ["associados" => $associados]);
-	}
+    {
+        $associados = Associado::orderBy("created_at", "DESC");
+
+        if (!empty($this->search)) {
+            $associados->where(function ($query) {
+                $query->where('nome', 'like', '%' . $this->search . '%')
+                    ->orWhere('email', 'like', '%' . $this->search . '%')
+                    ->orWhere('telefone', 'like', '%' . $this->search . '%')
+                    ->orWhere('cpf', 'like', '%' . $this->search . '%');
+            });
+        }
+
+        $associados = $associados->paginate(20);
+
+        return view('livewire.associados.consultar.datatable', ["associados" => $associados]);
+    }
 }
