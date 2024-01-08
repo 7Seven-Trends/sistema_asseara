@@ -9,11 +9,14 @@ class ModalCadastro extends Component
 {
     public $associado;
     public $etapa = 1;
-
+    public $nova_senha;
+    
     protected $listeners = ["carregaModalCadastroAssociado", "carregaModalEdicaoAssociado", "resetaModalCadastroAssociado"];
     protected $rules = [
         "associado.nome" => "",
         "associado.email" => "",
+		"associado.senha" => "",
+
         "associado.modalidade" => "",
         "associado.cpf" => "",
         "associado.telefone" => "",
@@ -43,10 +46,14 @@ class ModalCadastro extends Component
     }
 
     public function salvar(){
+        if($this->nova_senha){
+            $this->associado->senha = $this->nova_senha;
+        }
         $this->associado->save();
         $this->dispatchBrowserEvent('notificaToastr', ['tipo' => 'success', 'mensagem' => 'Informações salvas com sucesso!']);
         $this->emit("atualizaDatatableAssociados");
         $this->dispatchBrowserEvent("fechaModalCadastroAssociado");
+        
     }
 
     public function render()
