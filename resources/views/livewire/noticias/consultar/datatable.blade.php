@@ -220,7 +220,6 @@
                                 <tr class="add">
                                     <td colspan="5" class="text-center p-0">
                                         <a onclick="Livewire.emit('abreModalCadastroCategoria')">
-                                            <?xml version="1.0" encoding="iso-8859-1"?>
                                             <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                             <svg version="1.1" id="Capa_1" height="24" width="24"
                                                 xmlns="http://www.w3.org/2000/svg"
