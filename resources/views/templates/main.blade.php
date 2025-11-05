@@ -1,7 +1,7 @@
 @php
-    
+
     $usuario = \App\Models\Usuario::find(session()->get('usuario')['id']);
-    
+
 @endphp
 
 <!doctype html>
@@ -46,8 +46,7 @@
                     <div class="navbar-brand-box">
                         <a href="{{ route('painel.index') }}" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{ asset('images/logo_instituicao_mobile.png') }}" alt=""
-                                    width="100">
+                                <img src="{{ asset('images/logo_instituicao_mobile.png') }}" alt="" width="100">
                             </span>
                             <span class="logo-lg">
                                 <img src="{{ asset('images/logo_instituicao.png') }}" alt="" width="100">
@@ -133,6 +132,12 @@
                     <ul class="metismenu list-unstyled mt-3" id="side-menu">
                         <li class="menu-title" key="t-menu">Menu</li>
                         <li>
+                            <a href="{{ route('painel.index') }}" class="waves-effect">
+                                <i class='bx bx-home'></i>
+                                <span key="t-dashboard">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="javascript: void(0);" class="waves-effect">
                                 <i class='bx bx-desktop'></i>
                                 <span key="t-dashboards">Institucional</span>
@@ -187,18 +192,29 @@
                         </li>
 
 
-                        <li>
+                        <!-- <li>
                             <a href="{{ route('painel.hotsites') }}" class="waves-effect">
                                 <i class='bx bx-fullscreen'></i>
                                 <span key="t-dashboards">Hotsites de Captura</span>
                             </a>
-                        </li>
+                        </li> -->
 
                     </ul>
+
+
+                </div>
+                <!-- Adição: imagem no fim da sidebar -->
+                <div class="vertical-menu-footer bottom-0 text-center position-absolute">
+                    <a href="https://7seventrends.com.br" target="_blank" rel="noopener">
+                        <img src="{{ asset('images/sevenAD.jpg') }}" alt="Seven AD" class="img-fluid"
+                            style="max-width:100%; height:auto;" />
+                    </a>
                 </div>
                 <!-- Sidebar -->
             </div>
         </div>
+
+
         <!-- Left Sidebar End -->
 
 
@@ -264,7 +280,8 @@
     @toastr_render
     @livewireScripts
     <!-- dashboard init -->
-    {{-- <script src="{{asset('js/pages/dashboard.init.js')}}"></script> --}}
+    {{--
+    <script src="{{asset('js/pages/dashboard.init.js')}}"></script> --}}
 
     <!-- App js -->
     @yield('scripts')

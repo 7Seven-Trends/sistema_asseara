@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Registrar Observer para Associado
+        \App\Models\Associado::observe(\App\Observers\AssociadoObserver::class);
     }
 }

@@ -13,9 +13,55 @@ class PainelController extends Controller
 
     public function index()
     {
-        return view("index");
+        // Coletar métricas básicas para dashboard
+        $totalAssociados = \App\Models\Associado::count();
+        $totalLeads = \App\Models\Leads::count();
+        $totalUsuarios = \App\Models\Usuario::count();
+
+        // Dados para gráficos
+        $months = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $months[] = now()->subMonths($i)->format('Y-m');
+        }
+
+        // Associados por mês (últimos 6 meses)
+        $associadosPorMes = \App\Models\Associado::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, count(*) as total")
+            ->whereIn(\DB::raw("DATE_FORMAT(created_at, '%Y-%m')"), $months)
+            ->groupBy('ym')
+            ->pluck('total', 'ym')
+            ->toArray();
+
+        // Leads por mês (últimos 6 meses)
+        $leadsPorMes = \App\Models\Leads::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, count(*) as total")
+            ->whereIn(\DB::raw("DATE_FORMAT(created_at, '%Y-%m')"), $months)
+            ->groupBy('ym')
+            ->pluck('total', 'ym')
+            ->toArray();
+
+        // Usuários ativos vs inativos (assume coluna 'ativo' existe)
+        $ativos = \App\Models\Usuario::where('ativo', true)->count();
+        $inativos = \App\Models\Usuario::where('ativo', false)->count();
+
+        // preparar arrays ordenados para os meses
+        $associadosData = [];
+        $leadsData = [];
+        foreach ($months as $m) {
+            $associadosData[] = isset($associadosPorMes[$m]) ? (int) $associadosPorMes[$m] : 0;
+            $leadsData[] = isset($leadsPorMes[$m]) ? (int) $leadsPorMes[$m] : 0;
+        }
+
+        return view("index", compact(
+            'totalAssociados',
+            'totalLeads',
+            'totalUsuarios',
+            'months',
+            'associadosData',
+            'leadsData',
+            'ativos',
+            'inativos'
+        ));
     }
-    
+
     public function login()
     {
         return view("login");
